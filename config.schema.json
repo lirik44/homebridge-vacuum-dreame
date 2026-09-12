@@ -1,0 +1,83 @@
+{
+  "pluginAlias": "DreameVacuum",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Exposes Dreame robot vacuums as Matter robotic vacuum cleaners, over the local miIO/MIoT protocol. **Matter must be enabled for the bridge this plugin runs on** — HomeKit has no robot vacuum service, so the vacuum is only reachable through Matter. Each vacuum is commissioned as its own Matter device, with its own QR code, because Apple Home refuses to bridge a robot vacuum.",
+  "footerDisplay": "The IP address and token are read from the robot once and used on the LAN only — no Xiaomi cloud session is involved. Extract the token with [Xiaomi Cloud Tokens Extractor](https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor); the robot must be paired in the **Xiaomi Home** app. Reconfiguring the robot's Wi-Fi generates a new token.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Platform Name",
+        "type": "string",
+        "default": "Dreame Vacuum",
+        "required": true,
+        "description": "The name of the platform in the Homebridge log."
+      },
+      "devices": {
+        "title": "Vacuums",
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "required": true,
+              "placeholder": "Vacuum",
+              "description": "The name the vacuum gets in your controller."
+            },
+            "ip": {
+              "title": "IP Address",
+              "type": "string",
+              "required": true,
+              "format": "ipv4",
+              "placeholder": "192.168.1.50",
+              "description": "Give the robot a static lease, or its address will change under the plugin."
+            },
+            "token": {
+              "title": "Token",
+              "type": "string",
+              "required": true,
+              "minLength": 32,
+              "maxLength": 32,
+              "pattern": "^[0-9a-fA-F]{32}$",
+              "description": "The 32 character miIO token of the robot."
+            },
+            "pollingInterval": {
+              "title": "Polling Interval",
+              "type": "number",
+              "default": 10,
+              "minimum": 2,
+              "maximum": 600,
+              "description": "How often to ask the robot what it is doing, in seconds."
+            }
+          }
+        }
+      },
+      "debug": {
+        "title": "Debug Logging",
+        "type": "boolean",
+        "default": false,
+        "description": "Log every poll and command. Noisy: leave it off unless you are chasing a problem."
+      }
+    }
+  },
+  "layout": [
+    {
+      "key": "devices",
+      "type": "array",
+      "orderable": false,
+      "buttonText": "Add Vacuum",
+      "items": ["devices[].name", "devices[].ip", "devices[].token", "devices[].pollingInterval"]
+    },
+    {
+      "type": "fieldset",
+      "title": "Advanced",
+      "expandable": true,
+      "expanded": false,
+      "items": ["name", "debug"]
+    }
+  ]
+}
