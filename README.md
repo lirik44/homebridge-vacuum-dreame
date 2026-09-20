@@ -4,6 +4,7 @@
     <a href="https://www.npmjs.com/package/homebridge"><img src="https://img.shields.io/badge/powered%20by-homebridge-blue" alt="powered by homebridge"></a>
     <a href="https://www.npmjs.com/package/node-miio"><img src="https://img.shields.io/badge/powered%20by-node--miio-blue" alt="powered by node-miio"></a>
     <img src="https://img.shields.io/badge/cloud-not%20required-brightgreen" alt="cloud not required">
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-lightgrey" alt="license Apache-2.0"></a>
 </p>
 
 ---

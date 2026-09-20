@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Homebridge plugin exposing Dreame robot vacuums as Matter robotic vacuum cleaners over the local miIO/MIoT protocol",
   "author": "https://github.com/lirik44",
-  "homepage": "https://github.com/lirik44/homebridge-vacuum-dreame/blob/main/README.md",
+  "homepage": "https://github.com/lirik44/homebridge-vacuum-dreame#readme",
   "license": "Apache-2.0",
   "type": "module",
   "main": "dist/index.js",
